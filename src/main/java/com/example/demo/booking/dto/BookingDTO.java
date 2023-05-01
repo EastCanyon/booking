@@ -1,10 +1,6 @@
 package com.example.demo.booking.dto;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,24 +17,21 @@ import lombok.ToString;
 @ToString
 public class BookingDTO {
 	
-	private int id;
-	private int mainCode;
-	
+	private int bookingCode;
+	private Date bookingDate;
+	private Date cancleDate;
+	private Date useState;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date startTime;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date endTime;
-	
+	private int cost;
 	private String bookingState;
+	private int userCode;
+	private int mainCode;
+	
+	
 
-	public void setStartTime(String format) {
-		
-	}
-
-	public void setEndTime(String format) {
-		
-	}
 	
 	
 	
