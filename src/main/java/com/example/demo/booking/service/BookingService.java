@@ -7,5 +7,5 @@ import com.example.demo.booking.dto.BookingDTO;
 
 public interface BookingService {
 
-    List<BookingDTO> getBookingList(Date date);
+    List<BookingDTO> getBookingList(String date);
 }

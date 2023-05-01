@@ -1,5 +1,6 @@
 package com.example.demo.booking.service;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class BookingServiceImp implements BookingService {
     private BookingDAO bookingDAO;
 
     @Override
-    public List<BookingDTO> getBookingList(Date date) {
+    public List<BookingDTO> getBookingList(String date) {
         return bookingDAO.getBookingList(date);
     }
 }

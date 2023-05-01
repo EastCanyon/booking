@@ -4,10 +4,11 @@
 
 <mapper namespace="com.example.demo.booking.dao.BookingDAO">
 
-    <select id="getBookingList" parameterType="java.util.Date" resultType="com.example.demo.booking.dto.BookingDTO">
-        SELECT booking_code as id, main_code as mainCode, start_time as startTime, end_time as endTime, booking_state as bookingState
-        FROM booking
-        WHERE DATE(start_time) = #{date, jdbcType=DATE}
+   <select id="getBookingList" parameterType="String" resultType="com.example.demo.booking.dto.BookingDTO">
+SELECT booking_code as id, main_code as mainCode, start_time as startTime, end_time as endTime, booking_state as bookingState
+FROM booking
+WHERE use_date=  TO_DATE(#{date}, 'YY/MM/DD')
+
     </select>
 
 </mapper>

@@ -17,6 +17,7 @@ import com.example.demo.booking.service.BookingService;
 
 @RestController
 @CrossOrigin("*")
+//http://localhost:3000
 public class BookingController {
 
     @Autowired
@@ -31,17 +32,31 @@ public class BookingController {
     
     @PostMapping("/calendar")
     @ResponseBody
-    public List<BookingDTO> getBookingList(@RequestBody String selectedDate) throws Exception {
-    	SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd HH:mm:ss", Locale.KOREA);
-    	Date date = format.parse(selectedDate);
-        List<BookingDTO> bookingList = bookingService.getBookingList(date);
+    public List<BookingDTO> getBookingList(@RequestBody String newDate) throws Exception {
+        // 요청 본문에서 날짜 읽어들이기
+    	System.out.println(newDate);
+    	String aDate=newDate.substring(1,9);
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd", Locale.KOREA);
+        Date date = dateFormat.parse(aDate);
+        System.out.println(date);
+        // 선택한 날짜에 대한 예약 목록 가져오기
+        List<BookingDTO> bookingList = bookingService.getBookingList(aDate);
+        
+        // 시간 포맷 변경
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         for (BookingDTO bookingDto : bookingList) {
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             bookingDto.setStartTime(timeFormat.format(bookingDto.getStartTime()));
+            System.out.println(bookingDto.getStartTime());
             bookingDto.setEndTime(timeFormat.format(bookingDto.getEndTime()));
+            System.out.println(bookingDto.getEndTime());
         }
+  
+        // 예약 목록 반환
         return bookingList;
+
     }
+
+
 
 
 
