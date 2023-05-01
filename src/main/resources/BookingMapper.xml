@@ -3,12 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.booking.dao.BookingDAO">
+	
+<!-- BookingDTO 데이터를 삽입하는 INSERT 쿼리문 -->
+<insert id="insertBooking" parameterType="com.example.demo.booking.dto.BookingDTO">
+    INSERT INTO booking (
+        BOOKING_CODE, BOOKING_DATE, CANCLE_DATE, USE_STATE, START_TIME, END_TIME, COST, BOOKING_STATE, USER_CODE, MAIN_CODE
+    )
+    VALUES (
+        #{bookingCode}, SYSDATE, #{cancleDate}, #{useState}, #{startTime}, #{endTime}, #{cost}, #{bookingState}, #{userCode}, #{mainCode}
+    )
+</insert>
 
-   <select id="getBookingList" parameterType="String" resultType="com.example.demo.booking.dto.BookingDTO">
-SELECT booking_code as id, main_code as mainCode, start_time as startTime, end_time as endTime, booking_state as bookingState
-FROM booking
-WHERE use_date=  TO_DATE(#{date}, 'YY/MM/DD')
 
-    </select>
 
 </mapper>
