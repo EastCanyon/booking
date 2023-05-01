@@ -29,10 +29,5 @@ public class BookingDTO {
 	private String bookingState;
 	private int userCode;
 	private int mainCode;
-	
-	
 
-	
-	
-	
 }

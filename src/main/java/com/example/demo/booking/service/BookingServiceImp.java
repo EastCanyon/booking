@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.booking.dao.BookingDAO;
 import com.example.demo.booking.dto.BookingDTO;
 
-@Repository
 @Service
+@Repository
 public class BookingServiceImp implements BookingService {
 	private final BookingDAO bookingDAO;
 	
